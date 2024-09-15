@@ -36,23 +36,8 @@ public class TopicService {
     public TopicResponse update(TopicUpdateRequest request) {
         Topic topic = topicRepository.findById(request.id())
                 .orElseThrow(() -> new RuntimeException("TOPIC NOT FOUND"));
-        updateTitle(request.title(), topic);
-        updateContent(request.content(), topic);
-        topic.setUpdatedAt(LocalDateTime.now());
-        topicRepository.save(topic);
+        topicRepository.save(topic.update(request));
         return TopicResponse.of(topic);
-    }
-
-    private static void updateTitle(String title, Topic topic) {
-        if (title != null && !title.isBlank()) {
-            topic.setTitle(title);
-        }
-    }
-
-    private static void updateContent(String content, Topic topic) {
-        if (content != null && !content.isBlank()) {
-            topic.setContent(content);
-        }
     }
 
     public void deleteById(Long id) {
