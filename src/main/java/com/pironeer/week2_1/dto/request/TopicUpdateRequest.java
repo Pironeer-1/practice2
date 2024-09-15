@@ -7,20 +7,14 @@ public record TopicUpdateRequest(
         @NotNull
         @Schema(
                 description = "게시물 ID",
-                example = "1",
-                type = "long",
-                requiredMode = Schema.RequiredMode.REQUIRED)
+                example = "1")
         Long id,
         @Schema(
                 description = "수정할 게시물 제목",
-                example = "제목을 수정합니다",
-                type = "string",
-                requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+                example = "제목을 수정합니다")
         String title,
         @Schema(
                 description = "수정할 게시물 내용",
-                example = "내용을 수정합니다",
-                type = "string",
-                requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+                example = "내용을 수정합니다")
         String content) {
 }

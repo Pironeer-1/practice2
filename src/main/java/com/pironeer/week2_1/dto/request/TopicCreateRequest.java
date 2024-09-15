@@ -7,14 +7,10 @@ public record TopicCreateRequest(
         @NotNull
         @Schema(
                 description = "게시물 제목",
-                example = "제목입니다",
-                type = "string",
-                requiredMode = Schema.RequiredMode.REQUIRED)
+                example = "제목입니다")
         String title,
         @Schema(
                 description = "게시물 내용",
-                example = "내용입니다",
-                type = "string",
-                requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+                example = "내용입니다")
         String content) {
 }
