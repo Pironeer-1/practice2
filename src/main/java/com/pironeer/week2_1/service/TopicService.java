@@ -7,6 +7,7 @@ import com.pironeer.week2_1.repository.TopicRepository;
 import com.pironeer.week2_1.repository.domain.Topic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -58,5 +59,9 @@ public class TopicService {
         if (content != null && !content.isBlank()) {
             topic.setContent(content);
         }
+    }
+
+    public void deleteById(Long id) {
+        topicRepository.deleteById(id);
     }
 }
