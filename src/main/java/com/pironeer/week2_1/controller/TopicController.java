@@ -1,6 +1,7 @@
 package com.pironeer.week2_1.controller;
 
 import com.pironeer.week2_1.dto.request.TopicCreateRequest;
+import com.pironeer.week2_1.dto.request.TopicUpdateRequest;
 import com.pironeer.week2_1.dto.response.TopicResponse;
 import com.pironeer.week2_1.service.TopicService;
 import lombok.RequiredArgsConstructor;
@@ -31,5 +32,11 @@ public class TopicController {
     public ResponseEntity<List<TopicResponse>> readAll() {
         List<TopicResponse> responses = topicService.findAll();
         return ResponseEntity.ok().body(responses);
+    }
+
+    @PatchMapping
+    public ResponseEntity<TopicResponse> update(@RequestBody TopicUpdateRequest request) {
+        TopicResponse response = topicService.update(request);
+        return ResponseEntity.ok().body(response);
     }
 }
