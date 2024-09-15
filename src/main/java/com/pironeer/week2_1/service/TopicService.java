@@ -19,8 +19,7 @@ public class TopicService {
     private final TopicRepository topicRepository;
 
     public void save(TopicCreateRequest request) {
-        Topic topic = TopicMapper.from(request);
-        topicRepository.save(topic);
+        topicRepository.save(TopicMapper.from(request));
     }
 
     public TopicResponse findById(Long id) {
