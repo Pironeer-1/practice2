@@ -40,7 +40,7 @@ public class TopicController {
         return ResponseEntity.ok().body(responses);
     }
 
-    @PatchMapping
+    @PutMapping
     @Operation(summary = "게시물 수정")
     public ResponseEntity<TopicResponse> update(@RequestBody TopicUpdateRequest request) {
         TopicResponse response = topicService.update(request);
