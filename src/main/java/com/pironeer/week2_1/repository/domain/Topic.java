@@ -1,11 +1,10 @@
 package com.pironeer.week2_1.repository.domain;
 
 import lombok.Builder;
-import lombok.Getter;
-
+import lombok.Data;
 import java.time.LocalDateTime;
 
-@Getter
+@Data
 public class Topic {
     private Long id;
     private String title;
@@ -14,7 +13,12 @@ public class Topic {
     private LocalDateTime updatedAt;
 
     @Builder
-    public Topic(Long id, String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Topic(
+            Long id,
+            String title,
+            String content,
+            LocalDateTime createdAt,
+            LocalDateTime updatedAt) {
         this.id = id;
         this.title = title;
         this.content = content;

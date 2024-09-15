@@ -13,6 +13,12 @@ public class TopicRepository {
     private final Map<Long, Topic> topicMap = new HashMap<Long, Topic>();
 
     public void save(Topic topic) {
-        topicMap.put(topicIdxGenerator.getAndIncrement(), topic);
+        Long id = topicIdxGenerator.incrementAndGet();
+        topic.setId(id);
+        topicMap.put(id, topic);
+    }
+
+    public Topic findById(Long id) {
+        return topicMap.get(id);
     }
 }
