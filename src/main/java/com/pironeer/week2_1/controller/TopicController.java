@@ -6,6 +6,7 @@ import com.pironeer.week2_1.dto.response.TopicResponse;
 import com.pironeer.week2_1.service.TopicService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class TopicController {
 
     @PostMapping
     @Operation(summary = "게시물 작성")
-    public ResponseEntity<?> create(@RequestBody TopicCreateRequest request) {
+    public ResponseEntity<?> create(@Valid @RequestBody TopicCreateRequest request) {
         topicService.save(request);
         return ResponseEntity.ok().build();
     }
@@ -42,7 +43,7 @@ public class TopicController {
 
     @PutMapping
     @Operation(summary = "게시물 수정")
-    public ResponseEntity<TopicResponse> update(@RequestBody TopicUpdateRequest request) {
+    public ResponseEntity<TopicResponse> update(@Valid @RequestBody TopicUpdateRequest request) {
         TopicResponse response = topicService.update(request);
         return ResponseEntity.ok().body(response);
     }

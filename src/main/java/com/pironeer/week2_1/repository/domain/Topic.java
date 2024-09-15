@@ -28,21 +28,9 @@ public class Topic {
     }
 
     public Topic update(TopicUpdateRequest request) {
-        updateTitle(request.title());
-        updateContent(request.content());
+        this.title = request.title();
+        this.content = request.content();
         this.updatedAt = LocalDateTime.now();
         return this;
-    }
-
-    private void updateTitle(String title) {
-        if (title != null && !title.isBlank()) {
-            this.title = title;
-        }
-    }
-
-    private void updateContent(String content) {
-        if (content != null && !content.isBlank()) {
-            this.content = content;
-        }
     }
 }

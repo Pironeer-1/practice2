@@ -2,9 +2,11 @@ package com.pironeer.week2_1.dto.response;
 
 import com.pironeer.week2_1.repository.domain.Topic;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
+@Builder
 public record TopicResponse(
         @Schema(
                 description = "게시물 ID",
@@ -37,11 +39,12 @@ public record TopicResponse(
                 requiredMode = Schema.RequiredMode.REQUIRED)
         LocalDateTime updatedAt) {
     public static TopicResponse of(Topic topic) {
-        return new TopicResponse(
-                topic.getId(),
-                topic.getTitle(),
-                topic.getContent(),
-                topic.getCreatedAt(),
-                topic.getUpdatedAt());
+        return TopicResponse.builder()
+                .id(topic.getId())
+                .title(topic.getTitle())
+                .content(topic.getContent())
+                .createdAt(topic.getCreatedAt())
+                .updatedAt(topic.getUpdatedAt())
+                .build();
     }
 }
