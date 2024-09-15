@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/topic")
@@ -23,5 +25,11 @@ public class TopicController {
     public ResponseEntity<TopicResponse> read(@PathVariable("topicId") Long id) {
         TopicResponse response = topicService.findById(id);
         return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TopicResponse>> readAll() {
+        List<TopicResponse> responses = topicService.findAll();
+        return ResponseEntity.ok().body(responses);
     }
 }
